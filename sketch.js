@@ -30,6 +30,11 @@ function draw() {
 		fill(255, 255, 255);
 		ellipse(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), 4);
 
+
+		//line from horizontal circles
+		strokeWeight(1);
+		line(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), r + (radius * cos(omegas[i - 1] * time)), startIndex + (5 * spacer) + (((2 * 5)) * radius) + (radius * sin(omegas[4] * time)))
+
 		//vertical circles
 		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
 		strokeWeight(2);
@@ -41,6 +46,10 @@ function draw() {
 		strokeWeight(2);
 		fill(reds[i - 1], blues[i - 1], greens[i - 1]);
 		ellipse(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), 4);
+
+		//line from vertical circles
+		strokeWeight(1);
+		line(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), startIndex + (5 * spacer) + (((2 * 5)) * radius) + (radius * cos(omegas[4] * time)), r + (radius * sin(omegas[i - 1] * time)))
 	}
 }
 
