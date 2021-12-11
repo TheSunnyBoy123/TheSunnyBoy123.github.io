@@ -11,8 +11,8 @@ function draw() {
 	let spacer = 20;
 	let radius = 50;
 	let reds = [255, 255, 255, 255, 255];
-	let blues = [0, 87, 0, 133, 235];
-	let greens = [0, 87, 123, 133, 235];
+	let blues = [0, 87, 0, 133, 175];
+	let greens = [0, 87, 123, 133, 150];
 	let omegas = [0.20, 0.30, 0.50, 0.8, 1.0];
 	let pointR = 1;
 	for (let i = 1; i < 6; i++) {
@@ -25,9 +25,9 @@ function draw() {
 		ellipse(r, startIndex, (2 * radius));
 
 		//revolving dot for horizontal circles
-		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
+		stroke(255, 255, 255);
 		strokeWeight(2);
-		fill(reds[i - 1], blues[i - 1], greens[i - 1]);
+		fill(255, 255, 255);
 		ellipse(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), 4);
 
 		//vertical circles
@@ -37,14 +37,10 @@ function draw() {
 		ellipse(startIndex, r, (2 * radius));
 
 		//revolving dots for vertical circles
-		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
+		stroke(255, 255, 255);
 		strokeWeight(2);
 		fill(reds[i - 1], blues[i - 1], greens[i - 1]);
 		ellipse(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), 4);
-
-
-
-
 	}
 }
 
