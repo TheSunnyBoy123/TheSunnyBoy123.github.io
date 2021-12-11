@@ -10,25 +10,38 @@ function draw() {
 	let startIndex = 100;
 	let spacer = 20;
 	let radius = 50;
-	let reds = [250, 255, 232, 250, 250];
-	let blues = [90, 84, 12, 90, 90];
-	let greens = [40, 13, 122, 40, 40];
+	let reds = [255, 255, 255, 255, 255];
+	let blues = [0, 87, 0, 133, 235];
+	let greens = [0, 87, 123, 133, 235];
 	let omegas = [0.20, 0.30, 0.50, 0.8, 1.0];
 	let pointR = 1;
 	for (let i = 1; i < 6; i++) {
-		let r = startIndex + (i * spacer) + (((2 * i)) * radius);
+		let r = startIndex + (i * spacer) + (((2 * i)) * radius); //radius for each circle at this iteration
+
+		//horizontal circles
 		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
 		strokeWeight(2);
 		noFill();
 		ellipse(r, startIndex, (2 * radius));
 
-		stroke(reds[i - 1], blues[i - 1], greens[i + 1]);
+		//revolving dot for horizontal circles
+		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
 		strokeWeight(2);
 		fill(reds[i - 1], blues[i - 1], greens[i - 1]);
 		ellipse(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), 4);
 
+		//vertical circles
+		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
+		strokeWeight(2);
+		noFill();
+		ellipse(startIndex, r, (2 * radius));
 
-		// ellipse(startIndex, r, (2 * radius));
+		//revolving dots for vertical circles
+		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
+		strokeWeight(2);
+		fill(reds[i - 1], blues[i - 1], greens[i - 1]);
+		ellipse(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), 4);
+
 
 
 
