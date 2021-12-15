@@ -1,13 +1,17 @@
 function setup() {
 	createCanvas(windowWidth, windowHeight);
+	background(00, 00, 00)
+
 	// put setup code here
 }
 let time = 0.0;
-let vals = []
+
 function draw() {
-	background(00, 00, 00);
+	let points = [];
+
 	// put drawing code here
 	time += 0.05;
+
 	let startIndex = 100;
 	let spacer = 20;
 	let radius = 50;
@@ -16,8 +20,9 @@ function draw() {
 	let greens = [0, 87, 123, 133, 150];
 	let omegas = [0.20, 0.30, 0.50, 0.8, 1.0];
 	let pointR = 1;
+	let x = [];
+	let y = [];
 	for (let i = 1; i < 6; i++) {
-		let thisiter = [[], []];
 		let r = startIndex + (i * spacer) + (((2 * i)) * radius); //radius for each circle at this iteration
 
 		//horizontal circles
@@ -28,15 +33,13 @@ function draw() {
 
 		//revolving dot for horizontal circles
 		stroke(255, 255, 255);
-		strokeWeight(2);
+		strokeWeight(5);
 		fill(255, 255, 255);
-		ellipse(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), 4);
-		// thisiter[0].push(r + (radius * cos(omegas[i - 1] * time)));
-
-
+		ellipse(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), 5);
+		x.unshift(r + (radius * cos(omegas[i - 1] * time)));
 		//line from horizontal circles
-		strokeWeight(1);
-		line(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), r + (radius * cos(omegas[i - 1] * time)), startIndex + (5 * spacer) + (((2 * 5)) * radius) + (radius * sin(omegas[4] * time)))
+		// strokeWeight(1);
+		// line(r + (radius * cos(omegas[i - 1] * time)), startIndex + (radius * sin(omegas[i - 1] * time)), r + (radius * cos(omegas[i - 1] * time)), startIndex + (5 * spacer) + (((2 * 5)) * radius) + (radius * sin(omegas[4] * time)))
 
 		//vertical circles
 		stroke(reds[i - 1], blues[i - 1], greens[i - 1]);
@@ -46,19 +49,26 @@ function draw() {
 
 		//revolving dots for vertical circles
 		stroke(255, 255, 255);
-		strokeWeight(2);
+		strokeWeight(5);
 		fill(reds[i - 1], blues[i - 1], greens[i - 1]);
-		ellipse(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), 4);
-		// thisiter[1].push(r + (radius * sin(omegas[i - 1] * time)));
+		ellipse(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), 5);
+		y.unshift(r + (radius * sin(omegas[i - 1] * time)));
 		//line from vertical circles
-		strokeWeight(1);
-		line(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), startIndex + (5 * spacer) + (((2 * 5)) * radius) + (radius * cos(omegas[4] * time)), r + (radius * sin(omegas[i - 1] * time)))
+		// strokeWeight(1);
+		// line(startIndex + (radius * cos(omegas[i - 1] * time)), r + (radius * sin(omegas[i - 1] * time)), startIndex + (5 * spacer) + (((2 * 5)) * radius) + (radius * cos(omegas[4] * time)), r + (radius * sin(omegas[i - 1] * time)))
 	}
-	// vals.push(thisiter);
-	// for (let iter = 0; iter < vals.length; iter++) {
-	// 	for (let p = 0; p < vals[iter][0].length; p++) {
-	// 		vertex(vals[iter][0][p], vals[iter][1][p]);
-	// 	}
+	for (let i = 0; i < x.length; i++) {
+		for (let j = 0; j < y.length; j++) {
+			points.unshift([x[i], y[j]]);
+		}
+	}
+	for (let i = 0; i < points.length; i++) {
+		strokeWeight(2);
+		point(points[i][0], points[i][1]);
+	}
+	// if (points.length > 10000) {
+	// 	pass;
 	// }
+
 }
 
