@@ -1,3 +1,23 @@
 * {
     background: #2f2f2f;
 }
+
+
+#spacer{
+    width: 5em;
+}
+
+a {
+    font-family: Rubik;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited{
+    color:white;
+}
